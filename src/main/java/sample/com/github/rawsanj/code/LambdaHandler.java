@@ -1,4 +1,4 @@
-package com.github.rawsanj.code;
+package sample.com.github.rawsanj.code;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
@@ -10,7 +10,7 @@ public class LambdaHandler extends APIGatewayRequestHandler {
 	@Override
 	public APIGatewayProxyResponseEvent processRequest(APIGatewayProxyRequestEvent input, Context context) {
 
-		System.out.println("I am inside LAMBDA!" + ">>>" + input.getBody());
+//		System.out.println("I am inside LAMBDA!" + ">>>" + input.getBody());
 
 		response.setBody(input.getBody());
 

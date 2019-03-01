@@ -1,8 +1,8 @@
-package com.github.rawsanj;
+package sample.com.github.rawsanj.code;
 
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
-import com.github.rawsanj.code.LambdaHandler;
+import sample.com.github.rawsanj.code.LambdaHandler;
 
 public class Main {
 
@@ -21,28 +21,19 @@ public class Main {
 
 //		Runnable r1 = () -> {
 //			APIGatewayProxyResponseEvent res1 = lambdaHandler.handleRequest(requestEvent, null);
-//			System.out.println("FINAL OUTPUT 1: "+ res1.getBody());
+//			System.out.println("THREAD OUTPUT 1: "+ res1.getBody());
 //		};
 //
 //		Runnable r2 = () -> {
 //			APIGatewayProxyResponseEvent res2 = lambdaHandler.handleRequest(requestEvent2, null);
-//			System.out.println("FINAL OUTPUT 2: "+ res2.getBody());
+//			System.out.println("THREAD OUTPUT 2: "+ res2.getBody());
 //		};
 //
 //		Runnable r3 = () -> {
 //			APIGatewayProxyResponseEvent res3 = lambdaHandler.handleRequest(requestEvent3, null);
-//			System.out.println("FINAL OUTPUT 3: "+ res3.getBody());
+//			System.out.println("THREAD OUTPUT 3: "+ res3.getBody());
 //		};
-
-		APIGatewayProxyResponseEvent res1 = lambdaHandler.handleRequest(requestEvent, null);
-		System.out.println("FINAL OUTPUT 1: "+ res1.getBody());
-
-		APIGatewayProxyResponseEvent res2 = lambdaHandler.handleRequest(requestEvent2, null);
-		System.out.println("FINAL OUTPUT 2: "+ res2.getBody());
-
-		APIGatewayProxyResponseEvent res3 = lambdaHandler.handleRequest(requestEvent3, null);
-		System.out.println("FINAL OUTPUT 3: "+ res3.getBody());
-
+//
 //		Thread th1 = new Thread(r1);
 //		Thread th2 = new Thread(r2);
 //		Thread th3 = new Thread(r3);
@@ -65,6 +56,16 @@ public class Main {
 ////		}
 //
 //		th3.start();
+
+
+		APIGatewayProxyResponseEvent res1 = lambdaHandler.handleRequest(requestEvent, null);
+		System.out.println("PLAIN OUTPUT 1: "+ res1.getBody());
+
+		APIGatewayProxyResponseEvent res2 = lambdaHandler.handleRequest(requestEvent2, null);
+		System.out.println("PLAIN OUTPUT 2: "+ res2.getBody());
+
+		APIGatewayProxyResponseEvent res3 = lambdaHandler.handleRequest(requestEvent3, null);
+		System.out.println("PLAIN OUTPUT 3: "+ res3.getBody());
 
 	}
 }
