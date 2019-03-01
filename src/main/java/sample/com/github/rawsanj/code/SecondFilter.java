@@ -13,13 +13,16 @@ public class SecondFilter implements Filter {
 
 	@Override
 	public void doFilter(APIGatewayProxyRequestEvent request, APIGatewayProxyResponseEvent response, FilterChain chain) {
-		request.setBody("SECOND >>" + request.getBody());
+		request.setBody("IN-SECOND >>" + request.getBody());
 
-		logger.debug("NAME: "+ this.getClass().getName() + ". Order"+ this.order() + ". THREAD: " + Thread.currentThread().getName());
+		logger.debug("IN >>>>>> NAME: "+ this.getClass().getName() + ". Order"+ this.order() + ". THREAD: " + Thread.currentThread().getName() + ". REQUEST: "+ request.getBody() + ". RESPONSE: " + response.getBody());
 
 		chain.doFilter(request, response, chain);
 
-		response.setBody("SECOND >>" + response.getBody());
+		logger.debug("OUT <<<<<< NAME: "+ this.getClass().getName() + ". Order"+ this.order() + ". THREAD: " + Thread.currentThread().getName() + ". REQUEST: "+ request.getBody() + ". RESPONSE: " + response.getBody());
+
+
+		response.setBody("OUT-SECOND >>" + response.getBody());
 	}
 
 	@Override

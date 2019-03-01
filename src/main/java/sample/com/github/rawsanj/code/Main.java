@@ -59,13 +59,13 @@ public class Main {
 
 
 		APIGatewayProxyResponseEvent res1 = lambdaHandler.handleRequest(requestEvent, null);
-		System.out.println("PLAIN OUTPUT 1: "+ res1.getBody());
+		System.out.println("PLAIN OUTPUT 1: [[" + res1.getBody()+ "]]");
 
-		APIGatewayProxyResponseEvent res2 = lambdaHandler.handleRequest(requestEvent2, null);
-		System.out.println("PLAIN OUTPUT 2: "+ res2.getBody());
-
-		APIGatewayProxyResponseEvent res3 = lambdaHandler.handleRequest(requestEvent3, null);
-		System.out.println("PLAIN OUTPUT 3: "+ res3.getBody());
+//		APIGatewayProxyResponseEvent res2 = lambdaHandler.handleRequest(requestEvent2, null);
+//		System.out.println("PLAIN OUTPUT 2: "+ res2.getBody());
+//
+//		APIGatewayProxyResponseEvent res3 = lambdaHandler.handleRequest(requestEvent3, null);
+//		System.out.println("PLAIN OUTPUT 3: "+ res3.getBody());
 
 	}
 }
