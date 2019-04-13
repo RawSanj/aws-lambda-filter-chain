@@ -37,7 +37,10 @@ public class PropertyUtils {
 	}
 
 	public static void initPropertyValues(String propertiesFilePath) {
-		propertiesFileName = propertiesFilePath;
+
+		if (propertiesFilePath != null || propertiesFilePath.equalsIgnoreCase("")){
+			propertiesFileName = propertiesFilePath;
+		}
 		initPropertyValues();
 	}
 

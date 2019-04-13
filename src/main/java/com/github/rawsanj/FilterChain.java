@@ -20,7 +20,7 @@ public class FilterChain implements Filter {
 
 	void setRequestHandler(RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> requestHandler) {
 		this.requestHandler = requestHandler;
-		setFilterOrder();
+//		setFilterOrder();
 	}
 
 	public void doFilter(APIGatewayProxyRequestEvent request, APIGatewayProxyResponseEvent response, FilterChain chain) {
@@ -36,14 +36,10 @@ public class FilterChain implements Filter {
 		filter.doFilter(request, response, chain);
 	}
 
-	private void setFilterOrder() {
-		filters.sort((f1, f2) -> {
-			return f1.order() > f2.order() ? 1 : (f1.order() < f2.order()) ? -1 : 0;
-		});
-	}
+//	private void setFilterOrder() {
+//		filters.sort((f1, f2) -> {
+//			return f1.order() > f2.order() ? 1 : (f1.order() < f2.order()) ? -1 : 0;
+//		});
+//	}
 
-	@Override
-	public Integer order() {
-		return null;
-	}
 }
