@@ -39,8 +39,9 @@ public class UserRepository {
 			logger.info("User Already exists");
 			return userInDb;
 		} else {
-			User savedUser = USER_MAP.put(user.getUserName(), user);
-			logger.info("User saved: {}", user.toString());
+			USER_MAP.put(user.getUserName(), user);
+			User savedUser = USER_MAP.get(user.getUserName());
+			logger.info("User saved: {}", savedUser.toString());
 			return savedUser;
 		}
 	}

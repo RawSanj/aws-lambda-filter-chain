@@ -4,8 +4,6 @@ import java.util.UUID;
 
 public class User {
 
-	private String id;
-
 	private String userName;
 
 	private String fullName;
@@ -15,11 +13,9 @@ public class User {
 	private String company;
 
 	public User() {
-		this.id = UUID.randomUUID().toString();
 	}
 
 	public User(String userName, String fullName, Integer age, String company) {
-		this.id = UUID.randomUUID().toString();
 		this.userName = userName;
 		this.fullName = fullName;
 		this.age = age;
@@ -65,22 +61,18 @@ public class User {
 
 		User user = (User) o;
 
-		if (!id.equals(user.id)) return false;
 		return getUserName().equals(user.getUserName());
 
 	}
 
 	@Override
 	public int hashCode() {
-		int result = id.hashCode();
-		result = 31 * result + getUserName().hashCode();
-		return result;
+		return getUserName().hashCode();
 	}
 
 	@Override
 	public String toString() {
 		return "User{" +
-				"id='" + id + '\'' +
 				", userName='" + userName + '\'' +
 				", fullName='" + fullName + '\'' +
 				", age=" + age +
