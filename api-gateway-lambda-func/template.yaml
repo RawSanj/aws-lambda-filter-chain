@@ -1,0 +1,57 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+    AWS-Spring-Boot-And-Micronaut-Lambda-function
+
+Globals:
+    Function:
+        Timeout: 30
+
+Resources:
+
+    ApiGatewayFilterFunction:
+        Type: AWS::Serverless::Function
+        Properties:
+            CodeUri: target/api-gateway-lambda-func-1.0.0.jar
+            Handler: com.github.rawsanj.lambda.ApiGatewayRequestHandler
+            Runtime: java8
+            Events:
+                GetUserById:
+                    Type: Api
+                    Properties:
+                        Path: /user/{username}
+                        Method: get
+                GetAllUsers:
+                    Type: Api
+                    Properties:
+                        Path: /user
+                        Method: get
+                CreateUser:
+                    Type: Api
+                    Properties:
+                        Path: /user
+                        Method: post
+                UpdateUser:
+                    Type: Api
+                    Properties:
+                        Path: /user
+                        Method: put
+                DeleteUser:
+                    Type: Api
+                    Properties:
+                        Path: /user/{username}
+                        Method: delete
+
+Outputs:
+
+    UserApi:
+        Description: "API Gateway endpoint URL for dev stage for ApiGateway Filter function"
+        Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/dev/hello/"
+
+    ApiGatewayFilterFunction:
+        Description: "ApiGateway Filter Lambda Function ARN"
+        Value: !GetAtt ApiGatewayFilterFunction.Arn
+
+    ApiGatewayFilterFunctionIamRole:
+        Description: "Implicit IAM Role created for ApiGateway Filter function"
+        Value: !GetAtt ApiGatewayFilterFunctionRole.Arn
