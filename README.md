@@ -15,8 +15,14 @@ $ ./build.sh
 ```
 
 #### Build & Run sample API Gateway Lambda Function locally
+Build and run locally
 ```sh
 $ ./build.sh runLocally
+```
+
+Skip build and run locally
+```sh
+$ ./build.sh runLocally --skipBuild
 ```
 **Note:**
 Install [AWS SAM CLI](https://github.com/awslabs/aws-sam-cli) and [Docker](https://hub.docker.com/search/?type=edition&offering=community&operating_system=linux%2Cwindows) to run aws lambda functions locally.

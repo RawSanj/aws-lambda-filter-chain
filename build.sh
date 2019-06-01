@@ -2,21 +2,29 @@
 
 echo "======================== " `date` " ========================"
 
-printf "\n\n >>>>>>>>>>>>>>>>>>>> Building Library and Function <<<<<<<<<<<<<<<<<<<< \n\n"
-mvn clean install
+SKIP_BUILD="--skipBuild"
 
-cd api-gateway-lambda-func
+if [[ "$2" != "$SKIP_BUILD" ]];
+    then
+        printf "\n\n >>>>>>>>>>>>>>>>>>>> Building Library and Function <<<<<<<<<<<<<<<<<<<< \n\n"
+        mvn clean install
 
-printf "\n\n >>>>>>>>>>>>>>>>>>>> Packaging API Gateway Lambda Function <<<<<<<<<<<<<<<<<<<< \n\n"
+        cd api-gateway-lambda-func
 
-mvn clean package shade:shade
+        printf "\n\n >>>>>>>>>>>>>>>>>>>> Packaging API Gateway Lambda Function <<<<<<<<<<<<<<<<<<<< \n\n"
 
-printf "\n\n >>>>>>>>>>>>>>>>>>>> Packaging Completed. You can upload the jar file in AWS Console. <<<<<<<<<<<<<<<<<<<< \n\n"
+        mvn clean package shade:shade
+
+        printf "\n\n >>>>>>>>>>>>>>>>>>>> Packaging Completed. You can upload the jar file in AWS Console. <<<<<<<<<<<<<<<<<<<< \n\n"
+
+        cd ..
+
+fi
 
 RUN_LOCALLY=runLocally
 
 if [[ "$1" == "$RUN_LOCALLY" ]];
     then
         printf "\n\n >>>>>>>>>>>>>>>>>>>> Starting Local API Gate with Lambda Function <<<<<<<<<<<<<<<<<<<< \n\n"
-        sam local start-api
+        sam local start-api -t api-gateway-lambda-func/template.yaml
 fi
