@@ -33,6 +33,8 @@ $ // Get All User
 $ curl  http://127.0.0.1:3000/user
 $ // Post User
 $ curl -X POST http://localhost:3000/user -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"userName": "john","fullName": "John Doe","age": 29,"company": "Example"}'
+$ // Post Invalid Request i.e. username with special character
+$ curl -X POST http://localhost:3000/user -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"userName": "john@example","fullName": "John Doe","age": 29,"company": "Example"}'
 ```
 
 

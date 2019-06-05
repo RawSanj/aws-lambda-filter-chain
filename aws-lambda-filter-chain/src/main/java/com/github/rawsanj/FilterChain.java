@@ -20,10 +20,14 @@ public class FilterChain implements Filter {
 
 	void setRequestHandler(RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> requestHandler) {
 		this.requestHandler = requestHandler;
-//		setFilterOrder();
 	}
 
 	public void doFilter(APIGatewayProxyRequestEvent request, APIGatewayProxyResponseEvent response, FilterChain chain) {
+
+		// Allows Filters to set Response in-case handler is not executed due to Conditions in Filters
+		if (response == null) {
+			response = new APIGatewayProxyResponseEvent();
+		}
 
 		if (index == filters.size()){
 			requestHandler.handleRequest(request, null);
@@ -35,11 +39,5 @@ public class FilterChain implements Filter {
 		index += 1;
 		filter.doFilter(request, response, chain);
 	}
-
-//	private void setFilterOrder() {
-//		filters.sort((f1, f2) -> {
-//			return f1.order() > f2.order() ? 1 : (f1.order() < f2.order()) ? -1 : 0;
-//		});
-//	}
 
 }

@@ -47,6 +47,10 @@ public class SecondValidateUserFilter implements Filter {
 		if (isRequestValid) {
 			logger.info("Request is validated.");
 			chain.doFilter(request, response, chain);
+		} else {
+			response.setStatusCode(500);
+			response.setBody("Request Rejected");
+			logger.error("Invalid Request");
 		}
 	}
 }
