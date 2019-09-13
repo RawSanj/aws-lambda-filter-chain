@@ -13,20 +13,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Run some bash
-      run: |
-        if [[ -z "${GITHUB_TOKEN}" ]]; then
-          echo "GITHUB_TOKEN is undefined"
-        else
-          echo "GITHUB_TOKEN is set"
-        fi
-        echo $TEST_SECRET
-      shell: bash
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TEST_SECRET: ${{ secrets.TEST_SECRET }}
-    - name: Deploy to Github Registry
-      run: mvn deploy -Dregistry=https://maven.pkg.github.com/RawSanj -Dtoken=$GITHUB_TOKEN
+    - name: Run Tests
+      run: mvn clean test
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
