@@ -14,7 +14,7 @@ jobs:
       with:
         java-version: 1.8
     - name: Deploy to Github Registry
-      run: mvn deploy -Dregistry=https://maven.pkg.github.com/RawSanj -Dtoken=GITHUB_TOKEN
+      run: mvn deploy -Dregistry=https://maven.pkg.github.com/RawSanj/aws-lambda-filter-chain -Dtoken=GITHUB_TOKEN
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  

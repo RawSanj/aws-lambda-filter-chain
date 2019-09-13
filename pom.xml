@@ -13,5 +13,13 @@
 		<module>aws-lambda-filter-chain</module>
 		<module>api-gateway-lambda-func</module>
 	</modules>
+	
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub OWNER Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/RawSanj/aws-lambda-filter-chain</url>
+		</repository>
+	</distributionManagement>
 
 </project>
